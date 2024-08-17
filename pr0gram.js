@@ -20,7 +20,7 @@ for(let i = 1; i < 40; i++){
       let silverSpot = {"x": item.split(";")[2].split("-")[0].trim() - 0,
                         "y": item.split(";")[2].split("-")[1].trim() - 0,
                         "id": item.split(";")[3].trim() - 0};
-      if(list.filter(spot => spot.x == silverSpot.x && spot.y == silverSpot.y).length == 0)
+      if(list.filter(spot => spot.x == silverSpot.x && spot.y == silverSpot.y).length == 0 && silverSpot.id <= 130)
         list.push(silverSpot)
     })
   } catch (err) {
