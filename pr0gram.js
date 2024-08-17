@@ -2,7 +2,8 @@ const fs = require('node:fs');
 
 let list = [];
 try {
-  list = fs.readFileSync('list.json', 'utf8');
+  const str = fs.readFileSync('list.json', 'utf8');
+  list = JSON.parse(str.trim());
 } catch (err) {
   console.error(err);
 }
