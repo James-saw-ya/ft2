@@ -24,7 +24,7 @@ for(let i = 0; i < 40; i++){
     console.error(err);
   }
 }
-list.sort((a,b) => a.x - b.x)
+list = list.sort((a,b) => a.x - b.x)
 fs.writeFile('list.json', JSON.stringify(list), err => {
   if (err) {
     console.error(err);
