@@ -3,7 +3,7 @@ const fs = require('node:fs');
 let list = [];
 try {
   const str = fs.readFileSync('list.json', 'utf8');
-  //list = JSON.parse(str.trim());
+  list = JSON.parse(str);
   console.log(list);
 } catch (err) {
   console.error(err);
@@ -24,7 +24,7 @@ for(let i = 0; i < 40; i++){
     console.error(err);
   }
 }
-console.log(list)
+list.sort((a,b) => a.x - b.x)
 fs.writeFile('list.json', JSON.stringify(list), err => {
   if (err) {
     console.error(err);
