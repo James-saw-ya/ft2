@@ -9,7 +9,7 @@ try {
   console.error(err);
 }
 
-for(let i = 0; i < 40; i++){
+for(let i = 1; i < 40; i++){
   try {
     let data = fs.readFileSync(i+'.txt', 'utf8');
     if(data.includes("world unknown / not registrated"))
