@@ -32,6 +32,7 @@ jobs:
         run: |
           mkdir output
           cp list.json output/
+          cp fids.json output/
             
       - uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
