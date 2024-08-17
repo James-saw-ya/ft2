@@ -21,6 +21,7 @@ jobs:
         env:
           SJ: ${{ secrets.SJ }}
         run: |
+          wget "https://james-saw-ya.github.io/ft2/list.json" --quiet -O "list.json"
           for i in $(seq 1 40);
           do
             wget "${SJ}${i}" --quiet -O "${i}.txt"
