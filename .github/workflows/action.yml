@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main", "featureDev" ]
   schedule:
-  - cron: "0 5 * * *"
+  - cron: "0 5 */1 * *"
   workflow_dispatch:
 
 jobs:
@@ -27,6 +27,7 @@ jobs:
           done
           ls -la
           node pr0gram.js
+          ls -la
       
       - name: create artifact folder
         run: |
@@ -34,7 +35,7 @@ jobs:
           cp list.json output/
             
       - uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/featureDev' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output
