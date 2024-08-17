@@ -21,9 +21,9 @@ jobs:
         env:
           SJ: ${{ secrets.SJ }}
         run: |
-          for i in $(seq 1 10);
+          for i in $(seq 1 40);
           do
-            echo wget "${SJ}${i}" --quiet -O "${i}.txt"
+            wget "${SJ}${i}" --quiet -O "${i}.txt"
           done
           ls -la
           #node pr0gram.js
