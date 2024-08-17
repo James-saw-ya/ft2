@@ -2,7 +2,9 @@ const fs = require('node:fs');
 
 let list = [];
 try {
-  list = fs.readFileSync('list.json', 'utf8');
+  const str = fs.readFileSync('list.json', 'utf8');
+  list = JSON.parse(str);
+  console.log(list);
 } catch (err) {
   console.error(err);
 }
@@ -10,9 +12,11 @@ try {
 for(let i = 0; i < 40; i++){
   try {
     let data = fs.readFileSync(i+'.txt', 'utf8');
+    if(data.includes("world unknown / not registrated"))
+      continue;
     data = data.split("\n");
     data.forEach(item => { 
-      let silverSpot = {"x": item.split(";")[2].split("-")[0].trim() - 0, "x": item.split(";")[2].split("-")[1].trim() - 0};
+      let silverSpot = {"x": item.split(";")[2].split("-")[0].trim() - 0, "y": item.split(";")[2].split("-")[1].trim() - 0};
       if(list.filter(spot => spot.x == silverSpot.x && spot.y == silverSpot.y).length == 0)
         list.push(silverSpot)
     })
@@ -20,7 +24,7 @@ for(let i = 0; i < 40; i++){
     console.error(err);
   }
 }
-
+list = list.sort((a,b) => a.x - b.x)
 fs.writeFile('list.json', JSON.stringify(list), err => {
   if (err) {
     console.error(err);
