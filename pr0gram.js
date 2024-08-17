@@ -15,6 +15,7 @@ for(let i = 1; i < 40; i++){
     if(data.includes("world unknown / not registrated"))
       continue;
     data = data.split("\n");
+    data = data.reverse();
     data.forEach(item => { 
       let silverSpot = {"x": item.split(";")[2].split("-")[0].trim() - 0,
                         "y": item.split(";")[2].split("-")[1].trim() - 0,
