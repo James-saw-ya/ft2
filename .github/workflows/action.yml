@@ -26,9 +26,7 @@ jobs:
           do
             wget "${SJ}${i}" --quiet -O "${i}.txt"
           done
-          ls -la
           node pr0gram.js
-          ls -la
       
       - name: create artifact folder
         run: |
@@ -36,7 +34,7 @@ jobs:
           cp list.json output/
             
       - uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/featureDev' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output
