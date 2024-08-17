@@ -9,15 +9,17 @@ try {
   console.error(err);
 }
 
-for(let i = 0; i < 40; i++){
+for(let i = 1; i < 40; i++){
   try {
     let data = fs.readFileSync(i+'.txt', 'utf8');
     if(data.includes("world unknown / not registrated"))
       continue;
     data = data.split("\n");
     data.forEach(item => { 
-      let silverSpot = {"x": item.split(";")[2].split("-")[0].trim() - 0, "y": item.split(";")[2].split("-")[1].trim() - 0};
-      if(list.filter(spot => spot.x == silverSpot.x && spot.y == silverSpot.y).length == 0)
+      let silverSpot = {"x": item.split(";")[2].split("-")[0].trim() - 0,
+                        "y": item.split(";")[2].split("-")[1].trim() - 0,
+                        "id": item.split(";")[3].trim() - 0};
+      if(list.filter(spot => spot.x == silverSpot.x && spot.y == silverSpot.y && spot.id == silverSpot.id).length == 0)
         list.push(silverSpot)
     })
   } catch (err) {
