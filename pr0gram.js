@@ -10,6 +10,8 @@ try {
 for(let i = 0; i < 40; i++){
   try {
     let data = fs.readFileSync(i+'.txt', 'utf8');
+    if(data.includes("world unknown / not registrated"))
+      continue;
     data = data.split("\n");
     data.forEach(item => { 
       let silverSpot = {"x": item.split(";")[2].split("-")[0].trim() - 0, "x": item.split(";")[2].split("-")[1].trim() - 0};
