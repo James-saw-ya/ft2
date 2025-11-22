@@ -27,6 +27,7 @@ jobs:
             wget "${SJ}${i}" --quiet -O "${i}.txt"
           done
           node pr0gram.js
+          date >> last_run
       
       - name: create artifact folder
         run: |
@@ -35,6 +36,7 @@ jobs:
           cp list.json output/jids.json
           cp fids.json output/
           cp tids.json output/
+          cp last_run output/
             
       - uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
